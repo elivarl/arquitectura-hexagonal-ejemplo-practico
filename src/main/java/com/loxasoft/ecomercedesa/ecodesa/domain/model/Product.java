@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data //getter y setter
-@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,4 +16,8 @@ public class Product {
     private String description;
     private String urlImage;
     private Double price;
+
+    public Product() {
+        this.code = UUID.randomUUID().toString();
+    }
 }

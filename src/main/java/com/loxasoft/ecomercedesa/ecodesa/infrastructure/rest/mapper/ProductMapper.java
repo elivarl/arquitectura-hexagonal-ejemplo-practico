@@ -1,4 +1,4 @@
-package com.loxasoft.ecomercedesa.ecodesa.infrastructure.mapper;
+package com.loxasoft.ecomercedesa.ecodesa.infrastructure.rest.mapper;
 
 import com.loxasoft.ecomercedesa.ecodesa.domain.model.Product;
 import com.loxasoft.ecomercedesa.ecodesa.infrastructure.entity.ProductEntity;

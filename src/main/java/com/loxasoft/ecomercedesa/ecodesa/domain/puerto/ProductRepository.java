@@ -1,4 +1,4 @@
-package com.loxasoft.ecomercedesa.ecodesa.domain.repository;
+package com.loxasoft.ecomercedesa.ecodesa.domain.puerto;
 
 import com.loxasoft.ecomercedesa.ecodesa.domain.model.Product;
 

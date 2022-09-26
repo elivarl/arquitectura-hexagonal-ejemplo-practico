@@ -1,27 +1,26 @@
-package com.loxasoft.ecomercedesa.ecodesa.infrastructure.service;
+package com.loxasoft.ecomercedesa.ecodesa.infrastructure.adaptador;
 
 import com.loxasoft.ecomercedesa.ecodesa.infrastructure.exceptions.ResourceNotFoundException;
 import com.loxasoft.ecomercedesa.ecodesa.domain.model.Product;
-import com.loxasoft.ecomercedesa.ecodesa.domain.repository.ProductRepository;
-import com.loxasoft.ecomercedesa.ecodesa.infrastructure.crud.ProductCrudRepository;
+import com.loxasoft.ecomercedesa.ecodesa.domain.puerto.ProductRepository;
 import com.loxasoft.ecomercedesa.ecodesa.infrastructure.entity.ProductEntity;
-import com.loxasoft.ecomercedesa.ecodesa.infrastructure.mapper.ProductMapper;
+import com.loxasoft.ecomercedesa.ecodesa.infrastructure.rest.mapper.ProductMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Service
+@Repository
 @Slf4j
-public class ProductoServiceImpl implements ProductRepository {
+public class ProductRepositoryMySQL implements ProductRepository {
 
-    private final ProductCrudRepository productoCrudRepository;
+    private final ProductCrudRepositoryMySQL productoCrudRepository;
     @Autowired
     private ProductMapper productMapper;
 
-    public ProductoServiceImpl(ProductCrudRepository productoCrudRepository) {
+    public ProductRepositoryMySQL(ProductCrudRepositoryMySQL productoCrudRepository) {
         this.productoCrudRepository = productoCrudRepository;
     }
 
@@ -52,6 +51,9 @@ public class ProductoServiceImpl implements ProductRepository {
 
     @Override
     public void deleteProductById(Integer id) {
-
+        ProductEntity productEntity = this.productoCrudRepository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("Recurso no encontrado")
+        );
+        this.productoCrudRepository.deleteById(productEntity.getId());
     }
 }
