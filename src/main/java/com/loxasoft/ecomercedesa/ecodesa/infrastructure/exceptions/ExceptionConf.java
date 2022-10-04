@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolationException;
 
 @RestControllerAdvice
-public class ExceptionAdvanced {
+public class ExceptionConf {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Response> handle(ConstraintViolationException e){
         Response responseError = new Response();

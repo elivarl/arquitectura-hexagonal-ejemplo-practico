@@ -12,10 +12,12 @@ import org.mapstruct.Mappings;
 public interface ProductMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "code", target = "code"),
+           // @Mapping(source = "code", target = "code"),
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "description", target = "description"),
-            @Mapping(source = "price", target = "price")
+            @Mapping(source = "price", target = "price"),
+            @Mapping(source = "dateCreated", target = "dateCreated"),
+            @Mapping(source = "dateUpdated", target = "dateUpdated")
             }
     )
     Product toProduct(ProductEntity producto);

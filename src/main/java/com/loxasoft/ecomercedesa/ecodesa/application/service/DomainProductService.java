@@ -3,6 +3,8 @@ package com.loxasoft.ecomercedesa.ecodesa.application.service;
 import com.loxasoft.ecomercedesa.ecodesa.domain.model.Product;
 import com.loxasoft.ecomercedesa.ecodesa.domain.puerto.ProductRepository;
 
+import java.time.LocalDateTime;
+
 public class DomainProductService implements ProductService{
 
   private final ProductRepository productRepository;
@@ -23,6 +25,12 @@ public class DomainProductService implements ProductService{
 
     @Override
     public Product saveProduct(Product product) {
+        if (product.getId() != null){
+            product.setDateUpdated(LocalDateTime.now());
+        }else{
+            product.setDateCreated(LocalDateTime.now());
+            product.setDateUpdated(LocalDateTime.now());
+        }
         return this.productRepository.saveProduct(product);
     }
 

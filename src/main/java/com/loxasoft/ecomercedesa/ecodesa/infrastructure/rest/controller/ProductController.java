@@ -26,6 +26,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<Product> saveProduct(@RequestBody Product product){
         log.info("Hola saveProduct");
+        log.info("Product: {}",product);
         return new ResponseEntity<>(productService.saveProduct(product), HttpStatus.CREATED);
     }
 

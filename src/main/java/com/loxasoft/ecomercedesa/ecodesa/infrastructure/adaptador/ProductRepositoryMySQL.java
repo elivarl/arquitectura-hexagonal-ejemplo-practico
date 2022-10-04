@@ -40,12 +40,7 @@ public class ProductRepositoryMySQL implements ProductRepository {
     @Override
     public Product saveProduct(Product product) {
         ProductEntity productEntity = this.productMapper.toProductEnity(product);
-        if (product.getId() != null){
-            productEntity.setDateUpdated(LocalDateTime.now());
-        }else{
-            productEntity.setDateCreated(LocalDateTime.now());
-            productEntity.setDateUpdated(LocalDateTime.now());
-        }
+        System.out.println("Code: "+ productEntity.getCode());
         return this.productMapper.toProduct(this.productoCrudRepository.save(productEntity));
     }
 
